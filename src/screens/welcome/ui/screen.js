@@ -6,13 +6,13 @@ const Container = styled.View`
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  padding: 22px;
+  padding: 18px;
   height: 100%;
 `;
 
 const Header = styled.View`
   width: 100%;
-  padding: 20px 18px;
+  padding: 20px 0;
 `;
 
 const Close = styled.TouchableOpacity`
