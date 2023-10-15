@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Animated,
-  Easing,
-  FlatList,
-} from "react-native";
-import InputText from "./InputText";
-import ButtonStyled from "../../../components/ButtonStyled/ButtonStyled";
+import { View, StyleSheet, Animated, Easing, FlatList } from "react-native";
+import { ButtonStyled } from "../../../shared/styled";
 import LocationMenuItem from "./LocationMenuItem";
+import InputText from "./InputText";
 
 const LocationMenu = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -63,7 +55,11 @@ const LocationMenu = () => {
           onChangeText={setSearchText}
           placeholder={"Город, район, улица, метро"}
         />
-        <ButtonStyled title="Оптимальный офис" onPress={toggleMenu} style={styles.searchBtn} />
+        <ButtonStyled
+          title="Оптимальный офис"
+          onPress={toggleMenu}
+          style={styles.searchBtn}
+        />
         <FlatList
           data={locationMenuData}
           renderItem={({ item }) => (
@@ -79,9 +75,9 @@ const LocationMenu = () => {
 const styles = StyleSheet.create({
   searchBtn: {
     position: "absolute",
-    left:16,
-    bottom:5,
-    width: '100%',
+    left: 16,
+    bottom: 5,
+    width: "100%",
   },
   menu: {
     position: "absolute",

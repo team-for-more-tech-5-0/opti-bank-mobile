@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, TextInput, Image, StyleSheet } from 'react-native';
-import IconFilter from '../../../../assets/vectors/IconFilter';
+import React from "react";
+import { View, TextInput, Image, StyleSheet } from "react-native";
+import IconFilter from "../../../../assets/vectors/IconFilter";
 
 const InputText = ({ value, onChangeText, placeholder, iconSource }) => {
   return (
@@ -18,12 +18,12 @@ const InputText = ({ value, onChangeText, placeholder, iconSource }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: '#3A83F1',
-    backgroundColor: '#FFF',
+    borderColor: "#3A83F1",
+    backgroundColor: "#FFF",
     paddingHorizontal: 10,
     marginVertical: 12,
   },

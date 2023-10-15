@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { StatusBar, Button } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StatusBar } from "react-native";
+import { Map } from "../../../widgets";
+import * as Location from "expo-location";
+import LocationMenu from "./LocationMenu";
 import styled from "styled-components/native";
-import MapComponent from "../../../components/MapComponent/MapComponent";
-import * as Location from 'expo-location';
-import LocationMenu from './LocationMenu';
-import ButtonStyled from '../../../components/ButtonStyled/ButtonStyled';
 
 const Container = styled.View`
   flex: 1;
   flex-direction: column;
   justify-content: center;
   height: 100%;
-`;
-
-const Title = styled.Text`
-  padding: 10px;
-  width: 100%;
-  color: black;
-  font-weight: bold;
-  font-size: 20px;
-`;
-
-const Text = styled.Text`
-  color: black;
-  font-weight: medium;
-  font-size: 14px;
 `;
 
 const HomeScreen = () => {
@@ -57,11 +42,9 @@ const HomeScreen = () => {
 
   return (
     <Container>
-      <MapComponent region={mapRegion} onMarkerPress={getUserLocation} />
-      {/* <StatusBar style="auto" /> */}
-      {/* <Button title='Get User Location' onPress={getUserLocation} /> */}
+      <Map region={mapRegion} onMarkerPress={getUserLocation} />
+      <StatusBar style="auto" />
       <LocationMenu />
-      
     </Container>
   );
 };
