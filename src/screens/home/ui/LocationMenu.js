@@ -11,11 +11,16 @@ import {
 import InputText from "./InputText";
 import ButtonStyled from "../../../components/ButtonStyled/ButtonStyled";
 import LocationMenuItem from "./LocationMenuItem";
+import { useSelector } from "react-redux";
 
-const LocationMenu = () => {
+const LocationMenu = ({ changeRegion }) => {
+  const bankData = useSelector((state) => state.bankData);
   const [menuVisible, setMenuVisible] = useState(false);
   const slideAnimation = new Animated.Value(0);
   const [searchText, setSearchText] = useState("");
+  useEffect(() => {
+    // console.log(bankData)
+  }, [bankData]);
 
   useEffect(() => {
     if (menuVisible) {
@@ -39,12 +44,6 @@ const LocationMenu = () => {
     setMenuVisible(!menuVisible);
   };
 
-  const locationMenuData = [
-    { title: "title1", onPress: () => {} },
-    { title: "title2", onPress: () => {} },
-    { title: "title3", onPress: () => {} },
-  ];
-
   return (
     <View style={styles.container}>
       <Animated.View
@@ -63,11 +62,26 @@ const LocationMenu = () => {
           onChangeText={setSearchText}
           placeholder={"Город, район, улица, метро"}
         />
-        <ButtonStyled title="Оптимальный офис" onPress={toggleMenu} style={styles.searchBtn} />
+        <ButtonStyled
+          title="Оптимальный офис"
+          onPress={toggleMenu}
+          style={styles.searchBtn}
+        />
         <FlatList
-          data={locationMenuData}
+          data={bankData}
           renderItem={({ item }) => (
-            <LocationMenuItem title={item.title} onPress={item.onPress} />
+            <LocationMenuItem
+              key={item.bank_id}
+              contentProp={item}
+              onPress={() => {
+                changeRegion({
+                  latitude: item.latitude,
+                  longitude: item.longitude,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+                });
+              }}
+            />
           )}
           keyExtractor={(item) => item.title}
         />
@@ -79,9 +93,9 @@ const LocationMenu = () => {
 const styles = StyleSheet.create({
   searchBtn: {
     position: "absolute",
-    left:16,
-    bottom:5,
-    width: '100%',
+    left: 16,
+    bottom: 5,
+    width: "100%",
   },
   menu: {
     position: "absolute",

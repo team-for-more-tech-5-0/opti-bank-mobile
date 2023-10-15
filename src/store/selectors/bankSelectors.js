@@ -1,0 +1,1 @@
+export const getBankData = (state) => state.bankData;
